@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Cadastro</title>
+</head>
+<body>
+	<style>
+		body{
+			background-color: rgb(135, 120, 185);
+		}
+		form{
+			margin-right: 20%;
+			margin-left: 20%;
+			border: solid 2px;
+		}
+		h1{
+			text-align: center;
+			font-family: arial;
+
+		}
+		label {			display: inline-block;
+			text-align: center;
+			width: 120px;
+			line-height: 2;
+			font-size: 20px;
+			font-family: arial; 	</style>
+
+	<h1>
+		Cadastro de Clientes
+	</h1>
+	<form action="ex1.html" method="POST">
+		
+		<label for="Nome">Nome: </label>
+		<input type="text" name="Nome" id="Nome"><br>
+
+		<label for="gen">Gênero: </label>
+		<input type="radio" name="gen" value="M">Masculino
+		<input type="radio" name="gen" value="F">Feminino
+		<input type="radio" name="gen" value="U">Indefinido<br>
+
+		<label for="endereco">Endereço: </label>
+		<input type="text" name="endereco" id=" endereco"><br>
+
+		<label for="cidade">Cidade: </label>
+		<input type="text" name="cidade"><br>
+
+		<label for="estado">Estado: </label>
+		<input type="text" name="estado" id="estado"><br>
+
+		<label for="cep">CEP: </label>
+		<input type="text" name="cep" id="cep" placeholder="99999-999"><br>
+
+		<label for="idade">Idade: </label>
+		<input type="number" name="idade"><br>
+
+		<label for="tel">Telefone: </label>
+		<input type="tel" name="tel" id="tel" placeholder="(99) 99999-9999"><br>
+
+		<label for="cpf">CPF: </label>
+		<input type="te" name="url" id="url" placeholder="999.999.999-99"><br>
+
+		<label for="email">E-mail: </label>
+		<input type="email" name="email" id="email" placeholder="example@example.com"><br>
+		<label for="pw">Senha: </label>
+		<input type="password" name="pw" id="pw"><br>
+
+		
+		<input type="submit" name="Enviar" id="submit" value="Enviar">
+	</form>		
+
+</body>
+</html>

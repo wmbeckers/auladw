@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<title>Menu Navegação</title>
+		<meta charset=UTF-8/>
+		<style>
+			body {
+				background-image: url("background.jpg");
+			}
+			header {
+				width: 1280px;
+				background-color: blue;
+				height: 250px;
+			}
+			#menu ul{
+				margin: 0;
+				background-color: #000000; 
+				list-style: none;
+			}
+			#menu ul li{
+				display: inline;
+			}
+			#menu ul li a{
+				padding: 10px 20px;
+				display: inline-block;		
+				color: white;
+				text-decoration: none;
+			}			
+			#menu ul li a:hover {
+				color: #db0d8f;
+			}
+			nav {
+				width: 1280px;
+			}
+			section {
+				width: 1280px;
+				background-color: #f0a3d4;
+				height: 500px;
+				color:  #331829;
+			}
+			footer {
+				width: 1280px;
+				background-color: blue;
+				color:  white;
+				height: 100px;
+				background-image: url("footer.png");
+			}	
+			p {
+				text-align: center;
+				padding-left: 5px;
+				padding-right: 5px;
+			}	
+			h1 {
+				padding-top: 25px;
+			}	
+			label {
+				display: inline-block;
+				width: 120px;
+				text-align: right;
+				line-height: 2;
+			}	
+			input {
+				padding-bottom: 5px;
+				width: 150px;
+			}
+			textarea {
+				height: 80px;
+				width: 150px;
+			}
+		</style>		
+	</head>
+	<body>
+		<center>
+		<header>
+			<img src="banner.png">
+		</header>
+		<nav>
+			<div id="menu">
+				<ul>
+					<li><a href="home.html">Home</a></li>
+					<li><a href="historia.html">História</a></li>
+					<li><a href="produto.html">Produtos</a></li>
+					<li><a href="#">Contato</a></li>
+					<li><a href="youtube.html">Youtube</a></li>
+				</ul>
+			</div>
+		</nav>	
+		<section>
+			<h1>Entre em Contato!!</h1>
+			<table>
+				<tr>
+					<td><img src="contato1.jpg" width="450px" height="300px"></td>
+					<td><form method="POST">
+							<b><p>Digite seus Dados que Entramos em Contato!!</p></b>
+							<label>Nome: </label>
+							<input type="text" name="nome">
+							<br>
+							<label>Endereço: </label>
+							<input type="text" name="end">
+							<br>
+							<label>Celular: </label>
+							<input type="cel" name="cel">
+							<br>
+							<label>E-mail: </label>
+							<input type="email" name="email">
+							<br>							
+							<label>Descrição: </label>
+							<textarea></textarea>
+							<br>
+							<center><input type="submit" value="Enviar" name="bnt"><input type="reset" value="Limpar" name="bnt"></center>
+						</form>
+					</td>
+				</tr>
+			</table>
+		</section>
+		<footer>
+			<h3>Desenvolvido Por Samira Alves Miranda (@mirandasamira)<br>Aluna do Curso Técnico em Manutenção e Suporte em Informática<br>Instituto Federal de Educação, Ciência e Tecnologia do Mato Grosso (IFMT-TGA)<br>Chupa RH!!</h3>
+		</footer>
+	</center>	
+	</body>
+</html>
+

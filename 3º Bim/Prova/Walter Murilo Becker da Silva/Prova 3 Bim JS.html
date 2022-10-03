@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>
-		Exercícios JS
+		Exercício 0s JS
 	</title>
 		<style>
 		body{
@@ -22,6 +22,8 @@
 			text-align: center;
 		}
 		h3{
+			margin-left: 20%;
+			margin-right: 20%;
 			text-align: justify;
 			font-size: 20px;
 		}
@@ -29,6 +31,21 @@
 			text-align: center;
 			font-size: 18px;
 		}
+		input{
+			display: inline-block;
+			text-align: center;
+			margin-right: 38%;
+			margin-left: 38%;
+			border: solid 2px;}
+			
+		div1{
+			margin-left: 30%;
+			display: contents;
+			width: 120px;
+			line-height: 2;
+			font-size: 15px;
+		}
+		
 	</style>
 </head>
 <body>
@@ -54,32 +71,32 @@
 
 	<script src="js/ex01.js"></script><br>
 
-	<p><h2>Exercício 2</h2></p><br>
+	<p><h2>Exercício 02</h2></p><br>
 	
 	<p><h3>Faça uma página que leia 3 valores (considere que não serão informados valores iguais) e escreva o maior deles</h3></p>
 
 	<p>Clique para exibir.</p>
 
 	<center><button onclick="ex2()">
-		Clique Aqui!
+		Clique aqui!
 	</button></center>
 
 	<p id="maior"></p>
 
 	<script src="js/ex02.js"></script><br>
 
-	<p><h2>Exercício 3</h2></p><br>
+	<p><h2>Exercício 03</h2></p><br>
 
 	<p><h3>Escreva uma página que leia o número de litros vendidos e o tipo de combustível (codificado da seguinte forma: A-álcool, G-gasolina), calcule e imprima o valor a ser pago pelo cliente sabendo-se que o preço do litro da gasolina é R$ 4,80 e o preço do litro do álcool é R$ 2,70</h3></p>
 	
 	<script src="js/ex03.js"></script><br>
 
-	<p><h2>Exercício 4</h2></p><br>
+	<p><h2>Exercício 04</h2></p><br>
 
 	<p><h3>Faça um programa que receba 10 números e imprima o quadrado de cada número.</h3></p>
 
 	<center><button onclick="ex4()">
-		Clique Aqui!
+		Clique aqui!
 	</button></center>
 
 	<p id="sq1"></p>
@@ -95,21 +112,63 @@
 
 	<script src="js/ex04.js"></script><br>
 
-	<p><h2>Exercício 5</h2></p><br>
+	<p><h2>Exercício 05</h2></p><br>
+
+	<p><h3>Receba 10 números em uma caixa de texto. Verifique qual é o maior número e exiba-o.</h3></p>
+
+	<div1>
+		<label for="n1">Primeiro número: </label>
+		<input type="number" name="n1" id="n1"><br>
+
+		<label for="n2">Segundo número: </label>
+		<input type="number" name="n2" id="n2"><br>
+
+		<label for="n3">Terceiro número: </label>
+		<input type="number" name="n3" id="n3"><br>
+
+		<label for="n4">Quarto número: </label>
+		<input type="number" name="n4" id="n4"><br>
+
+		<label for="n5">Quinto número: </label>
+		<input type="number" name="n5" id="n5"><br>
+
+		<label for="n6">Sexto número: </label>
+		<input type="number" name="n6" id="n6"><br>
+
+		<label for="n7">Sétimo número: </label>
+		<input type="number" name="n7" id="n7"><br>
+
+		<label for="n8">Oitavo número: </label>
+		<input type="number" name="n8" id="n8"><br>
+
+		<label for="n9">Nono número: </label>
+		<input type="number" name="n9" id="n9"><br>
+
+		<label for="n10">Décimo número: </label>
+		<input type="number" name="n10" id="n10"><br>
+	</div1>
+
+	<p>Clique para exibir o maior número.</p>
+
+	<center><button onclick="ex5()">
+		Clique aqui!
+	</button></center>
+
 	<script src="js/ex05.js"></script><br>
 
-	<p><h2>Exercício 6</h2></p><br>
+	<p><h2>Exercício 06</h2></p><br>
 	<script src="js/ex06.js"></script><br>
 
-	<p><h2>Exercício 7</h2></p><br>
+	<p><h2>Exercício 07</h2></p><br>
 	<script src="js/ex07.js"></script><br>
 
-	<p><h2>Exercício 8</h2></p><br>
+	<p><h2>Exercício 08</h2></p><br>
 	<script src="js/ex08.js"></script><br>
 
-	<p><h2>Exercício 9</h2></p><br>
+	<p><h2>Exercício 09</h2></p><br>
 	
-	<h3>Receba  10  valores  numéricos  de  forma  desordenada.  Faça  um  algoritmo  para  ordenar  os  valores  e apresente em ordem crescente e decrescente. Obs: Não usar a função SORT. </h3></p><br>
+	<h3>Receba  10  valores  numéricos  de  forma  desordenada.  
+	Faça  um  algoritmo  para  ordenar  os  valores  e apresente em ordem crescente e decrescente. Obs: Não usar a função SORT. </h3></p><br>
 
 	<p>Clique para exibir.</p>
 
@@ -121,8 +180,10 @@
 
 	<p><h2>Exercício 10</h2></p><br>
 	
-	<p><h2>	**ENUNCIADO** </h2></p>
-
+	<p><h3>	Faça uma página com 2 botões conforme a seguir. Faça 2 funções. Ao pressionar o botão 1 leia o nome, idade e peso de uma 
+		pessoa. Ao pressionar o botão 2 calcule o IMC (Peso/Altura*Altura) e imprima. Se o IMC estiver entre 1 e 17 a pessoa está 
+		abaixo do peso. Se estiver entre 18 e 24 o peso é normal. E se estiver acima de 24 está acima do peso. 
+		Também apresente a situação da pessoa:</h3></p>
 	<p>Clique para exibir.</p>
 
 	<center><button onclick="ex9()">

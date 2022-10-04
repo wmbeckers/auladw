@@ -23,7 +23,7 @@ var eleitores=prompt ("Quantos eleitores há no município?");
 		}
 
 	var vv;
-	var valido = eleitores - (branco - nulo);
+	var valido = (eleitores - branco) - nulo;
 		vv = ("O número de votos válidos foi de: " + valido + "!")
 
 

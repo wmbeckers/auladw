@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% block title %}Admin - Usuários - Flask Blog{% endblock %}
+{% block content %}
+<div style="max-width: 1200px; margin: 2rem auto;">
+  <div style="text-align: center; margin-bottom: 2rem;">
+    <h2 style="font-size: 2rem; margin-bottom: 0.5rem;">⚙️ Administração de Usuários</h2>
+    <p style="color: var(--text-secondary);">Gerencie papéis e permissões dos usuários</p>
+  </div>
+
+  <div style="background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 16px; overflow: hidden;">
+    <table style="width: 100%; border-collapse: collapse;">
+      <thead>
+        <tr style="background: var(--bg-primary); border-bottom: 1px solid var(--border-color);">
+          <th style="padding: 1rem; text-align: left; color: var(--text-primary); font-weight: 600;">ID</th>
+          <th style="padding: 1rem; text-align: left; color: var(--text-primary); font-weight: 600;">👤 Usuário</th>
+          <th style="padding: 1rem; text-align: left; color: var(--text-primary); font-weight: 600;">📧 Email</th>
+          <th style="padding: 1rem; text-align: left; color: var(--text-primary); font-weight: 600;">🎭 Papel</th>
+          <th style="padding: 1rem; text-align: left; color: var(--text-primary); font-weight: 600;">⚡ Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for u in users %}
+        <tr style="border-bottom: 1px solid var(--border-color);">
+          <td style="padding: 1rem; color: var(--text-secondary);">{{ u.id }}</td>
+          <td style="padding: 1rem; color: var(--text-primary); font-weight: 500;">{{ u.username }}</td>
+          <td style="padding: 1rem; color: var(--text-secondary);">{{ u.email }}</td>
+          <td style="padding: 1rem;">
+            <span style="
+              padding: 0.25rem 0.75rem; 
+              border-radius: 20px; 
+              font-size: 0.875rem; 
+              font-weight: 500;
+              {% if u.role == 'admin' %}
+                background: linear-gradient(135deg, var(--accent-red), #ff6b6b); color: white;
+              {% elif u.role == 'moderator' %}
+                background: linear-gradient(135deg, var(--accent-yellow), #ffd93d); color: var(--bg-primary);
+              {% else %}
+                background: linear-gradient(135deg, var(--accent-blue), var(--accent-green)); color: white;
+              {% endif %}
+            ">
+              {{ u.role }}
+            </span>
+          </td>
+          <td style="padding: 1rem;">
+            <form method="post" style="display: flex; align-items: center; gap: 0.5rem;">
+              <input type="hidden" name="user_id" value="{{ u.id }}">
+              <select name="role" style="
+                padding: 0.5rem; 
+                border: 1px solid var(--border-color); 
+                border-radius: 8px; 
+                background: var(--bg-primary); 
+                color: var(--text-primary);
+                font-size: 0.875rem;
+              ">
+                <option value="user" {% if u.role=='user' %}selected{% endif %}>User</option>
+                <option value="moderator" {% if u.role=='moderator' %}selected{% endif %}>Moderator</option>
+                <option value="admin" {% if u.role=='admin' %}selected{% endif %}>Admin</option>
+              </select>
+              <button type="submit" class="btn btn-primary" style="font-size: 0.875rem; padding: 0.5rem 1rem;">
+                💾 Salvar
+              </button>
+            </form>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <div style="text-align: center; margin-top: 2rem;">
+    <a href="{{ url_for('index') }}" style="color: var(--text-secondary); text-decoration: none;">
+      ← Voltar ao início
+    </a>
+  </div>
+</div>
+{% endblock %}

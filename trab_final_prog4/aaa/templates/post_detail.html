@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}{{ post.title }} - Flask Blog{% endblock %}
+{% block content %}
+<div style="max-width: 900px; margin: 2rem auto;">
+  <div style="margin-bottom: 2rem;">
+    <a href="{{ url_for('index') }}" style="color: var(--text-secondary); text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem;">
+      ← Voltar aos posts
+    </a>
+  </div>
+
+  <article class="post" style="margin-bottom: 2rem;">
+    <h1 style="font-size: 2.5rem; margin-bottom: 1rem; line-height: 1.2;">{{ post.title }}</h1>
+    
+    <div class="post-meta" style="margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border-color);">
+      <span>👤 {{ post.author.username }}</span>
+      <span>📅 {{ post.created_at.strftime('%d/%m/%Y às %H:%M') }}</span>
+    </div>
+    
+    <div class="post-content" style="font-size: 1.1rem; line-height: 1.8; white-space: pre-wrap;">{{ post.body }}</div>
+  </article>
+
+  {% if current_user.is_authenticated and (current_user.id == post.author_id or current_user.role in ('moderator','admin')) %}
+    <div style="background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5rem;">
+      <h3 style="margin-bottom: 1rem; color: var(--text-primary);">⚙️ Ações do Post</h3>
+      <div style="display: flex; gap: 1rem;">
+        <a href="{{ url_for('edit_post', post_id=post.id) }}" class="btn btn-primary">✏️ Editar</a>
+        <form action="{{ url_for('delete_post', post_id=post.id) }}" method="post" 
+              onsubmit="return confirm('⚠️ Tem certeza que deseja excluir este post? Esta ação não pode ser desfeita.');"
+              style="display: inline;">
+          <button type="submit" class="btn btn-danger">🗑️ Excluir</button>
+        </form>
+      </div>
+    </div>
+  {% endif %}
+</div>
+{% endblock %}

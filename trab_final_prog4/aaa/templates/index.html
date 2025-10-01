@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block title %}Home - Flask Blog{% endblock %}
+{% block content %}
+<section>
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+    <h2 style="font-size: 2rem; background: linear-gradient(135deg, var(--accent-blue), var(--accent-green)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">📖 Posts Recentes</h2>
+    {% if current_user.is_authenticated %}
+      <a href="{{ url_for('create_post') }}" class="btn btn-primary">✍️ Criar Post</a>
+    {% endif %}
+  </div>
+
+  <div class="posts">
+    {% for p in posts %}
+      <article class="post">
+        <h2><a href="{{ url_for('post_detail', post_id=p.id) }}">{{ p.title }}</a></h2>
+        <div class="post-meta">
+          <span>👤 {{ p.author.username }}</span>
+          <span>📅 {{ p.created_at.strftime('%d/%m/%Y às %H:%M') }}</span>
+        </div>
+        <div class="post-content">
+          {{ p.body[:300] }}{% if p.body|length > 300 %}...{% endif %}
+        </div>
+        {% if p.body|length > 300 %}
+          <div style="margin-top: 1rem;">
+            <a href="{{ url_for('post_detail', post_id=p.id) }}" class="btn btn-outline">📖 Ler mais</a>
+          </div>
+        {% endif %}
+      </article>
+    {% else %}
+      <div style="text-align: center; padding: 4rem 2rem; background: var(--bg-secondary); border-radius: 16px; border: 1px solid var(--border-color);">
+        <h3 style="color: var(--text-secondary); margin-bottom: 1rem;">📝 Nenhum post encontrado</h3>
+        <p style="color: var(--text-secondary);">Seja o primeiro a criar um post!</p>
+        {% if current_user.is_authenticated %}
+          <div style="margin-top: 1.5rem;">
+            <a href="{{ url_for('create_post') }}" class="btn btn-primary">✍️ Criar Primeiro Post</a>
+          </div>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

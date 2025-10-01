@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>{% block title %}Flask Blog{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<body>
+  <header>
+    <h1><a href="{{ url_for('index') }}">🚀 Flask Blog</a></h1>
+    <nav>
+      {% if current_user.is_authenticated %}
+        <span style="color: var(--text-secondary);">Olá, <strong>{{ current_user.username }}</strong></span>
+        <a href="{{ url_for('perfil') }}">👤 Perfil</a>
+        {% if current_user.role == 'admin' %}
+          <a href="{{ url_for('admin_users') }}">⚙️ Admin</a>
+        {% endif %}
+        <a href="{{ url_for('logout') }}">🚪 Sair</a>
+      {% else %}
+        <a href="{{ url_for('login') }}">🔑 Entrar</a>
+        <a href="{{ url_for('register') }}">📝 Registrar</a>
+      {% endif %}
+    </nav>
+  </header>
+  <main>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <ul class="flashes">
+        {% for cat, msg in messages %}<li class="{{cat}}">{{msg}}</li>{% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+  </main>
+  <aside id="quote-area">
+    <div class="quote-header">
+      <h3>Citação do Dia</h3>
+      <button id="close-quote" class="close-btn" title="Fechar citação">&times;</button>
+    </div>
+    <div id="quote-text">(carregando...)</div>
+    <div id="quote-author"></div>
+  </aside>
+  <script>
+    async function fetchQuote() {
+      try {
+        const resp = await fetch("{{ url_for('quote_status') }}");
+        if (resp.status === 200) {
+          const j = await resp.json();
+          document.getElementById('quote-text').innerText = j.text;
+          document.getElementById('quote-author').innerText = '- ' + j.author;
+        } else {
+          // trigger server-side fetch and retry after delay
+          await fetch("{{ url_for('trigger_fetch_quote') }}");
+          setTimeout(fetchQuote, 1000);
+        }
+      } catch (e) {
+        console.error(e);
+        setTimeout(fetchQuote, 2000);
+      }
+    }
+    
+    // Close quote functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const closeBtn = document.getElementById('close-quote');
+      const quoteArea = document.getElementById('quote-area');
+      
+      if (closeBtn && quoteArea) {
+        closeBtn.addEventListener('click', function() {
+          quoteArea.style.display = 'none';
+          // Save preference in localStorage
+          localStorage.setItem('hideQuote', 'true');
+        });
+      }
+      
+      // Check if quote should be hidden
+      if (localStorage.getItem('hideQuote') === 'true') {
+        quoteArea.style.display = 'none';
+      } else {
+        fetchQuote();
+      }
+      
+      // Add option to show quote again (double-click on empty area)
+      document.addEventListener('dblclick', function(e) {
+        if (e.target === document.body && localStorage.getItem('hideQuote') === 'true') {
+          quoteArea.style.display = 'block';
+          localStorage.removeItem('hideQuote');
+          fetchQuote();
+        }
+      });
+    });
+  </script>
+</body>
+</html>

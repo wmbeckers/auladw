@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %}Criar Post - Flask Blog{% endblock %}
+{% block content %}
+<div style="max-width: 800px; margin: 2rem auto;">
+  <div style="text-align: center; margin-bottom: 2rem;">
+    <h2 style="font-size: 2rem; margin-bottom: 0.5rem;">✍️ Criar Novo Post</h2>
+    <p style="color: var(--text-secondary);">Compartilhe suas ideias com a comunidade</p>
+  </div>
+
+  <form method="post">
+    {{ form.hidden_tag() }}
+    
+    <div class="form-group">
+      {{ form.title.label }}
+      {{ form.title(placeholder="Digite um título cativante...") }}
+      {% if form.title.errors %}
+        <div style="color: var(--accent-red); font-size: 0.875rem; margin-top: 0.25rem;">
+          {% for error in form.title.errors %}{{ error }}{% endfor %}
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="form-group">
+      {{ form.body.label }}
+      {{ form.body(rows=12, placeholder="Escreva seu conteúdo aqui...\n\nDica: Use quebras de linha para organizar melhor seu texto.") }}
+      {% if form.body.errors %}
+        <div style="color: var(--accent-red); font-size: 0.875rem; margin-top: 0.25rem;">
+          {% for error in form.body.errors %}{{ error }}{% endfor %}
+        </div>
+      {% endif %}
+    </div>
+
+    <div style="display: flex; gap: 1rem; justify-content: flex-end;">
+      <a href="{{ url_for('index') }}" class="btn btn-outline">❌ Cancelar</a>
+      {{ form.submit(class="btn btn-primary", style="") }}
+    </div>
+  </form>
+</div>
+{% endblock %}

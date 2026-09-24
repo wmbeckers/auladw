@@ -25,4 +25,3 @@ make clean    # remove build/, lib/ e o executável
 Ao rodar `make`, as pastas `build/` (arquivos-objeto `.o`) e `lib/`
 (biblioteca estática `libaluno.a`) são criadas automaticamente — por isso
 não fazem parte deste zip.
-itório/zip.
